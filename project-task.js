@@ -44,27 +44,31 @@ but it contains multiple syntax errors that prevent it from being parsed.
 // 🔍 Provided JSON File with Errors
 // ============================================
 
-const invalidBookingJSON = `
+const invalidBookingJSON = 
 {
   "hotelName": "Grand City Hotel",
-  "checkInDate": "2024-05-15"
+  // added comma here that was missing from starter code, which JSON requires
+  "checkInDate": "2024-05-15",
   "checkOutDate": "2024-05-20",
   "guests": [
     {
-      name: "Alice Johnson",
+      // fixed missing double quotations, which JSON requires for all key values
+      "name": "Alice Johnson",
       "age": 30,
       "email": "alice.johnson@example.com"
     },
     {
       "name": "Bob Smith",
-      "age": undefined,
+      // JSON doesn't support 'undefined', so I converted to 'null'
+      "age": null,
       "email": "bob.smith@example"
     }
   ],
   "roomDetails": {
     "type": "Suite",
     "pricePerNight": 200,
-    "amenities": ["WiFi", "Breakfast", "Parking",]
+    // removed trailing comma after "Parking"- trailing commas are not supported in JSON
+    "amenities": ["WiFi", "Breakfast", "Parking"]
   }
 }
 `;
